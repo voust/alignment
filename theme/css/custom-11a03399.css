@@ -120,6 +120,8 @@ blockquote strong {
 .theme-popup button#mdbook-theme-light,
 .theme-popup button#mdbook-theme-coal {
     display: block !important;
+    font-size: 0;
+    /* Hide original text */
 }
 
 .theme-popup button#mdbook-theme-navy,
@@ -128,11 +130,15 @@ blockquote strong {
     display: none !important;
 }
 
-/* Rename the visible themes - simple labels */
+/* Replace with clean labels */
 .theme-popup button#mdbook-theme-light::after {
-    content: " Light";
+    content: "Light";
+    font-size: 1rem;
+    /* Restore font size */
 }
 
 .theme-popup button#mdbook-theme-coal::after {
-    content: " Dark";
+    content: "Dark";
+    font-size: 1rem;
+    /* Restore font size */
 }
