@@ -10,7 +10,7 @@ create-missing = false
 [output.html]
 theme = "theme"
 default-theme = "coal"
-additional-css = ["theme/css/custom.css"]
+additional-css = ["theme/css/classic.css", "theme/css/classic-dark.css", "theme/css/custom.css"]
 preferred-dark-theme = "coal"
 git-repository-url = "https://github.com/voust/alignment"
 edit-url-template = "https://github.com/voust/alignment/edit/main/{path}"
