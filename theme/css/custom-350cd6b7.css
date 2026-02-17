@@ -1,0 +1,140 @@
+/* Shared styles for both classic themes */
+
+:root {
+    /* Classic web typography - authentic 1990s defaults */
+    --body-font: 'Times New Roman', Times, serif;
+    --heading-font: Verdana, Geneva, sans-serif;
+    --code-font: 'Courier New', Courier, monospace;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: left;
+    /* Early web was left-aligned, not justified */
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--heading-font);
+    font-weight: bold;
+    letter-spacing: 0;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid;
+}
+
+h2 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+code,
+pre {
+    font-family: var(--code-font);
+    font-size: 0.95rem;
+}
+
+/* Classic link styling - underlines with thickness */
+a {
+    text-decoration: underline;
+    transition: none;
+    /* No transitions in classic web */
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    outline: 1px dotted;
+    outline-offset: 2px;
+}
+
+.page-wrapper {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+/* Tables - classic web styling */
+table {
+    border-collapse: collapse;
+    border: 2px solid;
+}
+
+th,
+td {
+    border: 1px solid;
+    padding: 4px 8px;
+}
+
+/* Horizontal rules */
+hr {
+    border: none;
+    border-top: 1px solid;
+    margin: 1em 0;
+}
+
+/* Blockquotes */
+blockquote {
+    font-family: var(--body-font);
+    font-size: 1rem;
+    border-left: 4px solid;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+blockquote strong {
+    font-weight: bold;
+}
+
+/* Fix mdBook theme selector to show only our themes with proper labels */
+.theme-popup {
+    background: var(--bg);
+    border: 1px solid var(--fg);
+}
+
+.theme-popup .theme {
+    padding: 8px 16px;
+    cursor: pointer;
+    display: block;
+    color: var(--fg);
+}
+
+.theme-popup .theme:hover {
+    background: var(--links-hover-bg, rgba(128, 128, 128, 0.2));
+}
+
+/* Show only light and coal themes, hide others */
+.theme-popup button[id="light"],
+.theme-popup button[id="coal"] {
+    display: block !important;
+}
+
+.theme-popup button[id="navy"],
+.theme-popup button[id="rust"],
+.theme-popup button[id="ayu"] {
+    display: none !important;
+}
+
+/* Rename the visible themes */
+.theme-popup button[id="light"]::after {
+    content: " Classic (Light)";
+    font-weight: bold;
+}
+
+.theme-popup button[id="coal"]::after {
+    content: " Classic Dark";
+    font-weight: bold;
+}
