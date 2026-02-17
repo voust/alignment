@@ -128,13 +128,11 @@ blockquote strong {
     display: none !important;
 }
 
-/* Rename the visible themes */
+/* Rename the visible themes - simple labels */
 .theme-popup button#mdbook-theme-light::after {
-    content: " Classic (Light)";
-    font-weight: bold;
+    content: " Light";
 }
 
 .theme-popup button#mdbook-theme-coal::after {
-    content: " Classic Dark";
-    font-weight: bold;
+    content: " Dark";
 }
