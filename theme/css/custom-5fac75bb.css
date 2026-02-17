@@ -117,24 +117,24 @@ blockquote strong {
 }
 
 /* Show only light and coal themes, hide others */
-.theme-popup button#light,
-.theme-popup button#coal {
+.theme-popup button#mdbook-theme-light,
+.theme-popup button#mdbook-theme-coal {
     display: block !important;
 }
 
-.theme-popup button#navy,
-.theme-popup button#rust,
-.theme-popup button#ayu {
+.theme-popup button#mdbook-theme-navy,
+.theme-popup button#mdbook-theme-rust,
+.theme-popup button#mdbook-theme-ayu {
     display: none !important;
 }
 
 /* Rename the visible themes */
-.theme-popup button#light::after {
+.theme-popup button#mdbook-theme-light::after {
     content: " Classic (Light)";
     font-weight: bold;
 }
 
-.theme-popup button#coal::after {
+.theme-popup button#mdbook-theme-coal::after {
     content: " Classic Dark";
     font-weight: bold;
 }
