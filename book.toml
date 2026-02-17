@@ -1,0 +1,22 @@
+[book]
+title = "ALIGNMENT"
+authors = ["The Alignment Team"]
+language = "en"
+multilingual = false
+src = "src"
+
+[build]
+create-missing = false
+
+[output.html]
+theme = "theme"
+default-theme = "coal"
+preferred-dark-theme = "coal"
+git-repository-url = "https://github.com/voust/alignment"
+edit-url-template = "https://github.com/voust/alignment/edit/main/{path}"
+mathjax-support = true
+site-url = "/alignment/"
+
+[output.html.search]
+enable = true
+limit-results = 30

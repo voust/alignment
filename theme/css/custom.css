@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Fira+Code:wght@300;500&display=swap');
+
+:root {
+    --accent-color: #00ff41;
+    --border-style: 1px solid #333;
+}
+
+body {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    text-align: justify;
+    hyphens: auto;
+}
+
+h1, h2, h3, code, pre { font-family: 'Fira Code', monospace; }
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    border-bottom: var(--border-style);
+    margin-top: 2em;
+}
+
+a { 
+    text-decoration: underline; 
+    text-decoration-thickness: 1px; 
+    transition: background-color 0.1s ease, color 0.1s ease; 
+}
+a:hover { background-color: var(--accent-color); color: #000 !important; text-decoration: none; }
+.coal a:visited { color: #a0a0a0; }
+.rust a:visited { color: #555555; }
+a:focus { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+
+.page-wrapper { max-width: 750px; margin: 0 auto; }
+
+blockquote {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--accent-color);
+    background: rgba(0, 255, 65, 0.05);
+    padding: 10px 20px;
+    margin: 20px 0;
+    color: inherit;
+}
+blockquote strong { color: var(--accent-color); text-transform: uppercase; }
