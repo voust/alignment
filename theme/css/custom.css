@@ -1,36 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Fira+Code:wght@300;500&display=swap');
-
 /* Shared styles for both classic themes */
 
-body {
-    font-family: 'EB Garamond', serif;
-    font-size: 1.25rem;
-    line-height: 1.6;
-    text-align: justify;
-    hyphens: auto;
+:root {
+    /* Classic web typography - authentic 1990s defaults */
+    --body-font: 'Times New Roman', Times, serif;
+    --heading-font: Verdana, Geneva, sans-serif;
+    --code-font: 'Courier New', Courier, monospace;
 }
 
-h1,
-h2,
-h3,
-code,
-pre {
-    font-family: 'Fira Code', monospace;
+body {
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: left;
+    /* Early web was left-aligned, not justified */
 }
 
 h1,
 h2,
 h3 {
-    text-transform: uppercase;
-    letter-spacing: -0.5px;
-    margin-top: 2em;
+    font-family: var(--heading-font);
+    font-weight: bold;
+    letter-spacing: 0;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid;
+}
+
+h2 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+code,
+pre {
+    font-family: var(--code-font);
+    font-size: 0.95rem;
 }
 
 /* Classic link styling - underlines with thickness */
 a {
     text-decoration: underline;
-    text-decoration-thickness: 1px;
-    transition: background-color 0.1s ease;
+    transition: none;
+    /* No transitions in classic web */
 }
 
 a:hover {
@@ -38,7 +57,7 @@ a:hover {
 }
 
 a:focus {
-    outline: 2px solid currentColor;
+    outline: 1px dotted;
     outline-offset: 2px;
 }
 
@@ -47,44 +66,75 @@ a:focus {
     margin: 0 auto;
 }
 
-/* Agent logs - inherits theme colors */
+/* Tables - classic web styling */
+table {
+    border-collapse: collapse;
+    border: 2px solid;
+}
+
+th,
+td {
+    border: 1px solid;
+    padding: 4px 8px;
+}
+
+/* Horizontal rules */
+hr {
+    border: none;
+    border-top: 1px solid;
+    margin: 1em 0;
+}
+
+/* Blockquotes */
 blockquote {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-    border-left: 4px solid currentColor;
-    padding: 10px 20px;
-    margin: 20px 0;
+    font-family: var(--body-font);
+    font-size: 1rem;
+    border-left: 4px solid;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    font-style: italic;
 }
 
 blockquote strong {
-    text-transform: uppercase;
-}
-
-/* Hide default theme options except our two */
-.theme-popup .theme:not([id="light"]):not([id="coal"]) {
-    display: none;
-}
-
-/* Rename theme labels */
-.theme-popup .theme#light::before {
-    content: "Classic";
     font-weight: bold;
 }
 
-.theme-popup .theme#coal::before {
-    content: "Classic Dark";
-    font-weight: bold;
+/* Fix mdBook theme selector to show only our themes with proper labels */
+.theme-popup {
+    background: var(--bg);
+    border: 1px solid var(--fg);
 }
 
-.theme-popup .theme#light,
-.theme-popup .theme#coal {
-    text-indent: -9999px;
-    line-height: 0;
-}
-
-.theme-popup .theme#light::before,
-.theme-popup .theme#coal::before {
-    text-indent: 0;
+.theme-popup .theme {
+    padding: 8px 16px;
+    cursor: pointer;
     display: block;
-    line-height: initial;
+    color: var(--fg);
+}
+
+.theme-popup .theme:hover {
+    background: var(--links-hover-bg, rgba(128, 128, 128, 0.2));
+}
+
+/* Show only light and coal themes, hide others */
+.theme-popup button[id="light"],
+.theme-popup button[id="coal"] {
+    display: block !important;
+}
+
+.theme-popup button[id="navy"],
+.theme-popup button[id="rust"],
+.theme-popup button[id="ayu"] {
+    display: none !important;
+}
+
+/* Rename the visible themes */
+.theme-popup button[id="light"]::after {
+    content: " Classic (Light)";
+    font-weight: bold;
+}
+
+.theme-popup button[id="coal"]::after {
+    content: " Classic Dark";
+    font-weight: bold;
 }
