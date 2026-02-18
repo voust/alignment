@@ -274,14 +274,14 @@ nav.nav-wide-wrapper {
     align-items: center !important;
     justify-content: center !important;
 
-    /* Tiny Size as requested (10px - extreme tiny) */
-    width: 10px !important;
-    min-width: 10px !important;
-    max-width: 10px !important;
-    height: 10px !important;
-    min-height: 10px !important;
-    max-height: 10px !important;
-    flex: 0 0 10px !important;
+    /* Small but usable (30px) */
+    width: 30px !important;
+    min-width: 30px !important;
+    max-width: 30px !important;
+    height: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+    flex: 0 0 30px !important;
     /* Prevent ANY flexing */
 
     box-sizing: border-box !important;
@@ -291,14 +291,14 @@ nav.nav-wide-wrapper {
     background: var(--panel, #c0c0c0) !important;
     color: #000000 !important;
 
-    /* Classic Bevel Border - 1px because buttons are too small */
-    border: 1px solid !important;
+    /* Classic Bevel Border - 2px again for visibility */
+    border: 2px solid !important;
     border-color: var(--bevel-light, #fff) var(--bevel-dark, #808080) var(--bevel-dark, #808080) var(--bevel-light, #fff) !important;
 
     text-decoration: none !important;
     font-family: var(--heading-font, sans-serif);
-    font-size: 8px !important;
-    /* Tiny font */
+    font-size: 16px !important;
+    /* Readable arrow */
     font-weight: bold;
     line-height: 1 !important;
     cursor: pointer;

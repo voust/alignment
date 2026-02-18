@@ -22,7 +22,7 @@ jobs:
       - name: Install mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
-          mdbook-version: '0.4.40'
+          mdbook-version: 'latest'
           # Use specific version to match local dev environment
       - name: Build Site
         run: mdbook build
