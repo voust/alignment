@@ -171,6 +171,11 @@ blockquote strong {
     display: none !important;
 }
 
+/* Ensure nav-wide-wrapper doesn't hide our buttons */
+.nav-wide-wrapper {
+    display: block !important;
+}
+
 /* Simple bottom navigation - centered and adjacent */
 a.nav-chapters {
     position: fixed !important;
@@ -179,8 +184,8 @@ a.nav-chapters {
     height: 40px !important;
     width: 60px !important;
     display: flex !important;
-    align-items: center;
-    justify-content: center;
+    align-items: center !important;
+    justify-content: center !important;
     z-index: 9999 !important;
     background: #666 !important;
     color: #fff !important;
@@ -192,12 +197,12 @@ a.nav-chapters {
     margin: 0 !important;
     padding: 0 !important;
     left: 50% !important;
-    transform: translateX(-50%);
+    right: auto !important;
 }
 
-/* Previous button - left of center */
+/* Previous button - left of center (perfectly centered pair) */
 a.nav-chapters.previous {
-    margin-left: -60px !important;
+    transform: translateX(calc(-50% - 30px)) !important;
     border-right: 1px solid #444 !important;
 }
 
@@ -205,9 +210,9 @@ a.nav-chapters.previous::after {
     content: "<";
 }
 
-/* Next button - right of center */
+/* Next button - right of center (perfectly centered pair) */
 a.nav-chapters.next {
-    margin-left: 0 !important;
+    transform: translateX(calc(-50% + 30px)) !important;
     border-left: 1px solid #444 !important;
 }
 
