@@ -19,16 +19,11 @@ jobs:
           cache: 'pip'
       - name: Validate & Generate Summary
         run: python scripts/generate_summary.py
-      - name: Install mdBook (Hardened)
-        run: |
-          set -euo pipefail
-          mkdir mdbook
-          URL="https://github.com/rust-lang/mdBook/releases/download/v0.5.2/mdbook-v0.5.2-x86_64-unknown-linux-gnu.tar.gz"
-          EXPECTED_HASH="084e4342ba564db270108763e404a7d1f309d932651a22484e93c0dc1a071f6d"
-          curl -L -o mdbook.tar.gz "$URL"
-          echo "$EXPECTED_HASH mdbook.tar.gz" | sha256sum -c -
-          tar -xzf mdbook.tar.gz -C mdbook
-          echo "$PWD/mdbook" >> $GITHUB_PATH
+      - name: Install mdBook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: '0.4.40'
+          # Revert to known stable version matching local dev environment
           # Use specific version to match local dev environment
       - name: Build Site
         run: mdbook build
