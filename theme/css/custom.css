@@ -157,36 +157,44 @@ blockquote strong {
     /* Restore font size */
 }
 
-/* Navigation buttons - create floating box at bottom */
-.nav-chapters {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-    z-index: 100;
-    background: var(--bg, #fff);
-    border: 1px solid var(--fg, #000);
-    padding: 8px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.nav-chapters a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    text-decoration: none;
-    border: 1px solid;
-    background: var(--bg);
-}
-
-.nav-chapters a:hover {
-    background: var(--links-hover-bg, rgba(128, 128, 128, 0.1));
-}
-
-/* Hide the default full-height nav buttons */
+/* Navigation buttons - create floating buttons at bottom-right */
+/* First, hide the default full-height nav buttons */
 .nav-wrapper {
     display: none !important;
+}
+
+/* Style the nav-chapters links themselves (they are the buttons) */
+a.nav-chapters {
+    position: fixed !important;
+    bottom: 20px;
+    width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    background: var(--bg, #fff);
+    border: 2px solid var(--fg, #000);
+    text-decoration: none !important;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+a.nav-chapters:hover {
+    background: var(--links-hover-bg, rgba(128, 128, 128, 0.2)) !important;
+}
+
+/* Position previous button */
+a.nav-chapters.previous {
+    right: 80px;
+}
+
+/* Position next button */
+a.nav-chapters.next {
+    right: 20px;
+}
+
+/* Make SVG icons visible */
+a.nav-chapters svg {
+    width: 24px;
+    height: 24px;
 }
