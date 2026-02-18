@@ -1,0 +1,62 @@
+/* Classic Light Theme - Authentic Early Web Aesthetic */
+
+.light {
+    /* Base colors */
+    --bg: #FFFFFF;
+    --fg: #000000;
+
+    /* Links - Classic web colors */
+    --links: #0000EE;
+    --links-visited: #551A8B;
+    --links-hover-bg: #E6E6FA;
+
+    /* Sidebar */
+    --sidebar-bg: #F8F8F8;
+    --sidebar-fg: #000000;
+    --sidebar-non-existant: #999999;
+    --sidebar-active: #0000EE;
+    --sidebar-spacer: #CCCCCC;
+
+    /* Search */
+    --searchbar-border-color: #CCCCCC;
+    --searchbar-bg: #FFFFFF;
+    --searchbar-fg: #000000;
+    --searchresults-header-fg: #000000;
+    --searchresults-border-color: #CCCCCC;
+    --searchresults-li-bg: #FFFFFF;
+    --search-mark-bg: #FFFF00;
+
+    /* Code blocks */
+    --inline-code-bg: #F5F5F5;
+    --inline-code-fg: #000000;
+    --code-block-bg: #F5F5F5;
+
+    /* Scrollbar */
+    --scrollbar: #CCCCCC;
+
+    /* Tables */
+    --table-border-color: #CCCCCC;
+    --table-header-bg: #F0F0F0;
+    --table-alternate-bg: #F8F8F8;
+
+    /* Quotes */
+    --quote-bg: #F0F0FF;
+    --quote-border: #0000EE;
+
+    /* Icons */
+    --icons: #000000;
+    --icons-hover: #0000EE;
+}
+
+.light a {
+    color: var(--links);
+}
+
+.light a:visited {
+    color: var(--links-visited);
+}
+
+.light a:hover {
+    background-color: var(--links-hover-bg);
+    text-decoration: none;
+}
