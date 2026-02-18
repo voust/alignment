@@ -48,7 +48,7 @@ pre {
     font-size: 14px;
 }
 
-/* Sidebar -consistent sizing */
+/* Sidebar - consistent sizing */
 .sidebar {
     font-size: 15px !important;
 }
@@ -176,33 +176,14 @@ blockquote strong {
     display: block !important;
 }
 
-/* Add padding to content for nav bar */
-.content {
-    padding-bottom: 50px !important;
-}
-
-/* Container for nav buttons - centered on content area */
-.content::after {
-    content: "";
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    z-index: 9998;
-    pointer-events: none;
-}
-
-/* Simple bottom navigation - centered on content, not window */
+/* Simple centered navigation bar - always at bottom */
 a.nav-chapters {
     position: fixed !important;
     top: auto !important;
     bottom: 0 !important;
     height: 40px !important;
     width: 60px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: block !important;
     z-index: 9999 !important;
     background: #666 !important;
     color: #fff !important;
@@ -210,26 +191,26 @@ a.nav-chapters {
     text-decoration: none !important;
     font-family: var(--heading-font);
     font-size: 24px !important;
+    line-height: 40px !important;
+    text-align: center !important;
     cursor: pointer;
     padding: 0 !important;
     margin: 0 !important;
-    opacity: 1 !important;
-    visibility: visible !important;
 }
 
-/* Previous button - always visible, left of center */
+/* Previous button - left half of centered pair */
 a.nav-chapters.previous {
-    left: calc(50% - 60px) !important;
+    left: calc(50vw - 60px) !important;
     border-right: 1px solid #444 !important;
 }
 
-a.nav-chapters.previous::after {
+a.nav-chapters.previous::before {
     content: "<";
 }
 
-/* Next button - always visible, right of center */
+/* Next button - right half of centered pair (touching previous) */
 a.nav-chapters.next {
-    left: calc(50%) !important;
+    left: calc(50vw) !important;
     border-left: 1px solid #444 !important;
 }
 
@@ -237,31 +218,23 @@ a.nav-chapters.next::before {
     content: ">";
 }
 
-/* Hover state - darker gray when clickable */
+/* Hover state - darker gray */
 a.nav-chapters:hover {
     background: #333 !important;
 }
 
-/* Disabled state - still visible but unclickable */
-a.nav-chapters[href=""],
-a.nav-chapters:not([href]) {
-    opacity: 0.3 !important;
-    cursor: default !important;
-    pointer-events: none !important;
-}
-
-/* Hide SVG icons completely */
+/* Hide SVG icons */
 a.nav-chapters svg {
     display: none !important;
 }
 
-/* Adjust for sidebar - keep buttons centered on content */
+/* Adjust when sidebar is open - shift right to stay centered on content */
 @media (min-width: 1080px) {
-    .sidebar-visible a.nav-chapters.previous {
-        left: calc(50% + 150px - 60px) !important;
+    html:not(.sidebar-hidden) a.nav-chapters.previous {
+        left: calc(50vw + 150px - 60px) !important;
     }
 
-    .sidebar-visible a.nav-chapters.next {
-        left: calc(50% + 150px) !important;
+    html:not(.sidebar-hidden) a.nav-chapters.next {
+        left: calc(50vw + 150px) !important;
     }
 }
