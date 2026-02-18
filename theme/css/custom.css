@@ -2,10 +2,24 @@
 
 :root {
     /* Classic web typography - authentic 1990s defaults */
-    --body-font: 'Times New Roman', Times, serif;
-    --heading-font: Verdana, Geneva, sans-serif;
-    --code-font: 'Courier New', Courier, monospace;
+    --font-serif: "Times New Roman", Times, serif;
+    --font-sans: Verdana, Geneva, sans-serif;
+    --font-mono: "Courier New", Courier, monospace;
+
+    --body-font: var(--font-serif);
+    --heading-font: var(--font-sans);
+    --code-font: var(--font-mono);
+
+    /* Classic UI Colors */
+    --panel: #c0c0c0;
+    /* Windows 95 gray */
+    --bevel-light: #ffffff;
+    --bevel-dark: #808080;
+    --bevel-darker: #404040;
+    --fg: #000000;
 }
+
+/* Note: Overriding body styling to use new vars if needed, but keeping existing structure */
 
 /* Normalize all text sizes for consistency */
 body {
@@ -170,93 +184,117 @@ blockquote strong {
    Container-based solution for bulletproof centering
    ============================================ */
 
+/* ============================================
+   CLASSIC CENTERED NAVIGATION BAR
+   ============================================ */
+
 /* Hide the default full-height nav buttons */
 .nav-wrapper {
     display: none !important;
 }
 
-/* Transform nav-wide-wrapper into our centered container */
+/* 
+   Container: Fixed at bottom, centered relative to content.
+   Uses pointer-events: none so it doesn't block clicks on content behind it,
+   while buttons re-enable pointer-events.
+*/
 nav.nav-wide-wrapper {
     position: fixed !important;
-    bottom: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 120px !important;
-    height: 40px !important;
+    bottom: 20px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
     z-index: 9999 !important;
     display: flex !important;
-    flex-direction: row !important;
     justify-content: center !important;
-    align-items: stretch !important;
-    gap: 0 !important;
+    align-items: center !important;
+    pointer-events: none !important;
+    background: transparent !important;
     padding: 0 !important;
     margin: 0 !important;
-    background: transparent !important;
-    pointer-events: auto !important;
+    transform: none !important;
+    /* Reset any existing transforms */
 }
 
-/* Individual navigation buttons */
+/* Navigation Buttons: The "Classic" look */
 a.nav-chapters {
+    pointer-events: auto !important;
     position: relative !important;
-    flex: 0 0 60px !important;
-    width: 60px !important;
+    flex: 0 0 auto !important;
+    /* Don't stretch */
+    width: auto !important;
+    min-width: 40px;
     height: 40px !important;
+
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    background: #666 !important;
-    color: #fff !important;
-    border: none !important;
+
+    background: var(--panel, #c0c0c0) !important;
+    color: var(--fg, #000) !important;
+
+    /* Classic Bevel Border */
+    border: 2px solid !important;
+    border-color: var(--bevel-light, #fff) var(--bevel-dark, #808080) var(--bevel-dark, #808080) var(--bevel-light, #fff) !important;
+
     text-decoration: none !important;
-    font-family: var(--heading-font);
-    font-size: 24px !important;
+    font-family: var(--heading-font, sans-serif);
+    font-size: 20px !important;
+    font-weight: bold;
     line-height: 1 !important;
     cursor: pointer;
-    padding: 0 !important;
-    margin: 0 !important;
     box-sizing: border-box !important;
+
+    margin: 0 !important;
+    /* Buttons touch each other */
 }
 
-/* Previous button styling */
-a.nav-chapters.previous {
-    border-right: 1px solid #444 !important;
+/* Active/Pressed State */
+a.nav-chapters:active {
+    border-color: var(--bevel-dark, #808080) var(--bevel-light, #fff) var(--bevel-light, #fff) var(--bevel-dark, #808080) !important;
+    transform: translate(1px, 1px);
+    /* Slight shift for tactile feel */
 }
 
-a.nav-chapters.previous::before {
-    content: "<";
-}
-
-/* Next button styling */
-a.nav-chapters.next {
-    border-left: 1px solid #444 !important;
-}
-
-a.nav-chapters.next::before {
-    content: ">";
-}
-
-/* Hover state */
+/* Hover State */
 a.nav-chapters:hover {
-    background: #333 !important;
+    background: var(--links-hover-bg, #dcdcdc) !important;
+    text-decoration: none !important;
 }
 
-/* Hide SVG icons from mdBook */
+/* Icons */
+a.nav-chapters.previous::before {
+    content: "<" !important;
+    margin-right: 4px;
+}
+
+a.nav-chapters.next::after {
+    content: ">" !important;
+    margin-left: 4px;
+}
+
 a.nav-chapters svg {
     display: none !important;
+    /* Hide default SVGs */
 }
 
-/* Adjust container position when sidebar is open */
-html.sidebar-visible nav.nav-wide-wrapper {
-    left: calc(50% + 150px) !important;
-    transform: translateX(-50%) !important;
+/* 
+   Sidebar Handling
+   When the sidebar is open, shift the center point of the nav container.
+   The sidebar width is typically 300px (mdBook default).
+*/
+.sidebar-visible nav.nav-wide-wrapper {
+    left: 300px !important;
+    width: calc(100% - 300px) !important;
 }
 
-/* Ensure buttons work on mobile */
-@media (max-width: 1080px) {
+/* Mobile: Sidebar covers screen or is hidden, always center to viewport */
+@media (max-width: 780px) {
 
-    /* On smaller screens, no sidebar offset needed */
-    html.sidebar-visible nav.nav-wide-wrapper {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
+    /* Standard mdBook breakpoint */
+    .sidebar-visible nav.nav-wide-wrapper,
+    nav.nav-wide-wrapper {
+        left: 0 !important;
+        width: 100% !important;
     }
 }
