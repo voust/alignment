@@ -27,7 +27,8 @@ h3 {
 
 h1 {
     font-size: 1.8rem;
-    border-bottom: 2px solid;
+    border-bottom: none;
+    /* Remove title underline */
 }
 
 h2 {
@@ -64,6 +65,19 @@ a:focus {
 .page-wrapper {
     max-width: 750px;
     margin: 0 auto;
+}
+
+/* Sidebar - increase font size for better readability */
+.sidebar {
+    font-size: 1rem;
+}
+
+.sidebar .chapter {
+    font-size: 1rem;
+}
+
+.sidebar ol {
+    font-size: 1rem;
 }
 
 /* Tables - classic web styling */
@@ -141,4 +155,38 @@ blockquote strong {
     content: "Dark";
     font-size: 1rem;
     /* Restore font size */
+}
+
+/* Navigation buttons - create floating box at bottom */
+.nav-chapters {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+    background: var(--bg, #fff);
+    border: 1px solid var(--fg, #000);
+    padding: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-chapters a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    border: 1px solid;
+    background: var(--bg);
+}
+
+.nav-chapters a:hover {
+    background: var(--links-hover-bg, rgba(128, 128, 128, 0.1));
+}
+
+/* Hide the default full-height nav buttons */
+.nav-wrapper {
+    display: none !important;
 }
