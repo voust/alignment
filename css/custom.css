@@ -99,6 +99,52 @@ pre {
     font-size: 16px !important;
 }
 
+/* Header Navigation - Specific Styling */
+.menu-title {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 15px !important;
+}
+
+.header-nav-arrow {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 18px !important;
+    /* Slightly larger than text */
+    color: var(--fg) !important;
+    /* Match text color */
+    text-decoration: none !important;
+    opacity: 0.6 !important;
+    /* Subtle by default */
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+
+    padding: 5px !important;
+    /* Click target buffer */
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+}
+
+.header-nav-arrow:hover {
+    opacity: 1 !important;
+    /* Fully opaque on hover */
+    text-decoration: none !important;
+    transform: scale(1.1);
+    /* Slight grow */
+}
+
+/* Ensure title text doesn't break */
+.header-title-text {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 60vw;
+    /* Prevent title from pushing layout too wide on mobile */
+}
+
 /* Classic link styling */
 a {
     text-decoration: underline;
