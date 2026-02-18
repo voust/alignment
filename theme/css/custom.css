@@ -288,7 +288,9 @@ nav.nav-wide-wrapper {
     padding: 0 !important;
 
     /* Colors */
-    background: var(--panel, #c0c0c0) !important;
+    background: #c0c0c0 !important;
+    /* Force explicit color */
+    background-color: #c0c0c0 !important;
     color: #000000 !important;
 
     /* Classic Bevel Border - 2px again for visibility */
@@ -301,8 +303,10 @@ nav.nav-wide-wrapper {
     /* Readable arrow */
     font-weight: bold;
     line-height: 1 !important;
-    cursor: pointer;
+    cursor: pointer !important;
     margin: 0 !important;
+    z-index: 10000 !important;
+    /* Ensure on top */
 }
 
 /* Disabled State */
