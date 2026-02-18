@@ -207,39 +207,36 @@
                 </div>
             </div>
 
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
-
-
-
-                <!-- Force both buttons to exist via JS if missing -->
-                <script>
-                    (function () {
-                        var nav = document.querySelector('.nav-wide-wrapper');
-                        if (!nav) return;
-
-                        var prev = nav.querySelector('.previous');
-                        var next = nav.querySelector('.next');
-
-                        if (!prev) {
-                            var span = document.createElement('span');
-                            span.className = 'nav-chapters previous disabled';
-                            span.setAttribute('aria-hidden', 'true');
-                            // Add icon manually since FA might not be reliable on spans? 
-                            // Actually we use CSS content now, so class is enough.
-                            nav.prepend(span);
-                        }
-
-                        if (!next) {
-                            var span = document.createElement('span');
-                            span.className = 'nav-chapters next disabled';
-                            span.setAttribute('aria-hidden', 'true');
-                            nav.appendChild(span);
-                        }
-                    })();
-                </script>
-            </nav>
 
         </div>
+
+        <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+
+            <script>
+                (function () {
+                    var nav = document.querySelector('.nav-wide-wrapper');
+                    if (!nav) return;
+
+                    var prev = nav.querySelector('.previous');
+                    var next = nav.querySelector('.next');
+
+                    if (!prev) {
+                        var span = document.createElement('span');
+                        span.className = 'nav-chapters previous disabled';
+                        span.setAttribute('aria-hidden', 'true');
+                        nav.prepend(span);
+                    }
+
+                    if (!next) {
+                        var span = document.createElement('span');
+                        span.className = 'nav-chapters next disabled';
+                        span.setAttribute('aria-hidden', 'true');
+                        nav.appendChild(span);
+                    }
+                })();
+            </script>
+        </nav>
 
 
 
