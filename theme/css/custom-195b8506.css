@@ -32,6 +32,21 @@ body {
     /* Make room for nav bar */
 }
 
+/* Improve Readability - scale font size */
+@media (min-width: 420px) {
+    body {
+        font-size: 17px;
+    }
+
+    /* Also update sidebar chapters if needed? Usually good to keep sidebar smaller */
+}
+
+@media (min-width: 760px) {
+    body {
+        font-size: 18px;
+    }
+}
+
 h1,
 h2,
 h3 {
@@ -227,21 +242,22 @@ nav.nav-wide-wrapper {
 
 /* 
    Sidebar Handling:
-   When sidebar is open, the "content area" starts at 300px.
-   So we set left to 300px, right stays 0.
-   Flexbox will center the children in this new available space.
+   When sidebar is open, user can use TOC for navigation.
+   We hide the bottom buttons to avoid alignment issues and clutter.
 */
 .sidebar-visible nav.nav-wide-wrapper {
-    left: 300px !important;
-    right: 0 !important;
-    width: auto !important;
-    transform: none !important;
+    display: none !important;
 }
 
 /* Mobile: Sidebar behavior overrides */
 @media (max-width: 1080px) {
 
-    .sidebar-visible nav.nav-wide-wrapper,
+    /* If sidebar covers screen, nav is already hidden by overlay logic usually, 
+       but if we explicitly hide it, good. */
+    .sidebar-visible nav.nav-wide-wrapper {
+        display: none !important;
+    }
+
     nav.nav-wide-wrapper {
         left: 0 !important;
         right: 0 !important;
@@ -249,7 +265,7 @@ nav.nav-wide-wrapper {
 }
 
 /* Navigation Buttons: The "Classic" look */
-a.nav-chapters {
+.nav-chapters {
     pointer-events: auto !important;
     position: relative !important;
 
@@ -258,71 +274,77 @@ a.nav-chapters {
     align-items: center !important;
     justify-content: center !important;
 
-    /* Reduced size as requested */
-    width: 44px !important;
-    height: 44px !important;
+    /* Tiny Size as requested (10px - extreme tiny) */
+    width: 10px !important;
+    min-width: 10px !important;
+    max-width: 10px !important;
+    height: 10px !important;
+    min-height: 10px !important;
+    max-height: 10px !important;
+    flex: 0 0 10px !important;
+    /* Prevent ANY flexing */
+
     box-sizing: border-box !important;
+    padding: 0 !important;
 
     /* Colors */
     background: var(--panel, #c0c0c0) !important;
     color: #000000 !important;
 
-    /* Classic Bevel Border */
-    border: 2px solid !important;
+    /* Classic Bevel Border - 1px because buttons are too small */
+    border: 1px solid !important;
     border-color: var(--bevel-light, #fff) var(--bevel-dark, #808080) var(--bevel-dark, #808080) var(--bevel-light, #fff) !important;
 
     text-decoration: none !important;
     font-family: var(--heading-font, sans-serif);
-    font-size: 18px !important;
-    /* Slightly smaller text */
+    font-size: 8px !important;
+    /* Tiny font */
     font-weight: bold;
     line-height: 1 !important;
     cursor: pointer;
     margin: 0 !important;
 }
 
-/* Slot Assignment */
-a.nav-chapters.previous {
-    grid-column: 1 !important;
-    justify-self: end !important;
-    /* Push to right of left slot */
-}
-
-a.nav-chapters.next {
-    grid-column: 2 !important;
-    justify-self: start !important;
-    /* Push to left of right slot */
+/* Disabled State */
+.nav-chapters.disabled {
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+    border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark) var(--bevel-light) !important;
+    /* Keep raised but dim */
+    background: #e0e0e0 !important;
+    color: #888 !important;
 }
 
 /* Active/Pressed State */
-a.nav-chapters:active {
+.nav-chapters:active {
     border-color: var(--bevel-dark, #808080) var(--bevel-light, #fff) var(--bevel-light, #fff) var(--bevel-dark, #808080) !important;
     transform: translate(1px, 1px);
 }
 
 /* Hover State */
-a.nav-chapters:hover {
+.nav-chapters:hover {
     background: var(--links-hover-bg, #dcdcdc) !important;
     text-decoration: none !important;
 }
 
-/* Icons/Text */
-a.nav-chapters.previous::before {
+/* Icons/Text: Use CSS content for consistency */
+.nav-chapters.previous::before {
     content: "<" !important;
     margin-right: 0;
 }
 
-a.nav-chapters.next::before {
+.nav-chapters.next::before {
     content: ">" !important;
     margin-left: 0;
 }
 
-/* New: Hide 'next' psudeo-element on next button to avoid double arrows */
-a.nav-chapters.next::after {
+.nav-chapters.next::after {
     content: none !important;
 }
 
-a.nav-chapters svg {
+/* Hide FontAwesome icons inside */
+.nav-chapters i,
+.nav-chapters svg {
     display: none !important;
 }
 
