@@ -16,7 +16,7 @@
     --bevel-light: #ffffff;
     --bevel-dark: #808080;
     --bevel-darker: #404040;
-    --fg: #000000;
+    /* Removed --fg force override to respect theme colors */
 }
 
 /* Note: Overriding body styling to use new vars if needed, but keeping existing structure */
@@ -194,44 +194,71 @@ blockquote strong {
 }
 
 /* 
-   Container: Fixed at bottom, centered relative to content.
-   Uses pointer-events: none so it doesn't block clicks on content behind it,
-   while buttons re-enable pointer-events.
+   Container: Fixed at bottom, centered layout.
+   Uses display: grid (2 columns) to ensure consistent slots for Previous/Next.
+   Even if one button is missing, the other stays in its slot.
+   Width: 200px ensures enough space between them while staying centered.
+   Pointer-events: none so clicks pass through empty space.
 */
 nav.nav-wide-wrapper {
     position: fixed !important;
     bottom: 20px !important;
-    left: 0 !important;
-    width: 100% !important;
+    left: 50% !important;
+    /* Start centered */
+    transform: translateX(-50%) !important;
+    /* Perfect center */
+    width: 200px !important;
     height: auto !important;
     z-index: 9999 !important;
-    display: flex !important;
-    justify-content: center !important;
+
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
     align-items: center !important;
+    justify-items: center !important;
+    /* Center buttons in their cells */
+
     pointer-events: none !important;
     background: transparent !important;
     padding: 0 !important;
     margin: 0 !important;
-    transform: none !important;
-    /* Reset any existing transforms */
+}
+
+/* 
+   Sidebar Handling:
+   When sidebar is open, shift the center point.
+   Instead of complex calc(), we offset the 'left' position.
+   300px sidebar -> Center point becomes 300px + remaining space/2.
+   remaining space = 100% - 300px.
+   center = 300px + (50% - 150px) = 150px + 50%?
+   Easier: left: calc(50% + 150px).
+   This places the center exactly in the middle of the content area.
+*/
+.sidebar-visible nav.nav-wide-wrapper {
+    left: calc(50% + 150px) !important;
+    width: 200px !important;
+    /* Keep fixed width */
+    transform: translateX(-50%) !important;
 }
 
 /* Navigation Buttons: The "Classic" look */
 a.nav-chapters {
     pointer-events: auto !important;
     position: relative !important;
-    flex: 0 0 auto !important;
-    /* Don't stretch */
-    width: auto !important;
-    min-width: 40px;
-    height: 40px !important;
 
+    /* Box Model */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    width: 60px !important;
+    /* Fixed button width */
+    height: 40px !important;
+    box-sizing: border-box !important;
 
+    /* Colors */
     background: var(--panel, #c0c0c0) !important;
-    color: var(--fg, #000) !important;
+    color: #000000 !important;
+    /* Always black text for classic gray buttons */
 
     /* Classic Bevel Border */
     border: 2px solid !important;
@@ -243,17 +270,26 @@ a.nav-chapters {
     font-weight: bold;
     line-height: 1 !important;
     cursor: pointer;
-    box-sizing: border-box !important;
-
     margin: 0 !important;
-    /* Buttons touch each other */
+}
+
+/* Slot Assignment */
+a.nav-chapters.previous {
+    grid-column: 1 !important;
+    justify-self: end !important;
+    /* Push to right of left slot */
+}
+
+a.nav-chapters.next {
+    grid-column: 2 !important;
+    justify-self: start !important;
+    /* Push to left of right slot */
 }
 
 /* Active/Pressed State */
 a.nav-chapters:active {
     border-color: var(--bevel-dark, #808080) var(--bevel-light, #fff) var(--bevel-light, #fff) var(--bevel-dark, #808080) !important;
     transform: translate(1px, 1px);
-    /* Slight shift for tactile feel */
 }
 
 /* Hover State */
@@ -262,39 +298,33 @@ a.nav-chapters:hover {
     text-decoration: none !important;
 }
 
-/* Icons */
+/* Icons/Text */
 a.nav-chapters.previous::before {
     content: "<" !important;
-    margin-right: 4px;
+    margin-right: 0;
 }
 
-a.nav-chapters.next::after {
+a.nav-chapters.next::before {
     content: ">" !important;
-    margin-left: 4px;
+    margin-left: 0;
+}
+
+/* New: Hide 'next' psudeo-element on next button to avoid double arrows */
+a.nav-chapters.next::after {
+    content: none !important;
 }
 
 a.nav-chapters svg {
     display: none !important;
-    /* Hide default SVGs */
-}
-
-/* 
-   Sidebar Handling
-   When the sidebar is open, shift the center point of the nav container.
-   The sidebar width is typically 300px (mdBook default).
-*/
-.sidebar-visible nav.nav-wide-wrapper {
-    left: 300px !important;
-    width: calc(100% - 300px) !important;
 }
 
 /* Mobile: Sidebar covers screen or is hidden, always center to viewport */
-@media (max-width: 780px) {
+@media (max-width: 1080px) {
 
-    /* Standard mdBook breakpoint */
+    /* Standard mdBook breakpoint is often around 1080px on desktop? User mentioned mobile. */
     .sidebar-visible nav.nav-wide-wrapper,
     nav.nav-wide-wrapper {
-        left: 0 !important;
-        width: 100% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
 }
