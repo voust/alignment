@@ -274,32 +274,33 @@ nav.nav-wide-wrapper {
     align-items: center !important;
     justify-content: center !important;
 
-    /* Small but usable (30px) */
-    width: 30px !important;
-    min-width: 30px !important;
-    max-width: 30px !important;
-    height: 30px !important;
-    min-height: 30px !important;
-    max-height: 30px !important;
-    flex: 0 0 30px !important;
+    /* Small but usable (40px) */
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    flex: 0 0 40px !important;
     /* Prevent ANY flexing */
 
     box-sizing: border-box !important;
     padding: 0 !important;
 
-    /* Colors */
-    background: #c0c0c0 !important;
-    /* Force explicit color */
-    background-color: #c0c0c0 !important;
-    color: #000000 !important;
+    /* Colors - High Contrast Debugging */
+    background: #FF5722 !important;
+    /* Bright Orange */
+    background-color: #FF5722 !important;
+    color: #FFFFFF !important;
+    /* White Text */
 
     /* Classic Bevel Border - 2px again for visibility */
     border: 2px solid !important;
-    border-color: var(--bevel-light, #fff) var(--bevel-dark, #808080) var(--bevel-dark, #808080) var(--bevel-light, #fff) !important;
+    border-color: #ffffff #808080 #808080 #ffffff !important;
 
     text-decoration: none !important;
     font-family: var(--heading-font, sans-serif);
-    font-size: 16px !important;
+    font-size: 20px !important;
     /* Readable arrow */
     font-weight: bold;
     line-height: 1 !important;
@@ -307,15 +308,19 @@ nav.nav-wide-wrapper {
     margin: 0 !important;
     z-index: 10000 !important;
     /* Ensure on top */
+    opacity: 1 !important;
+    /* Force visible */
 }
 
 /* Disabled State */
 .nav-chapters.disabled {
     pointer-events: none !important;
-    opacity: 0.5 !important;
+    opacity: 0.8 !important;
+    /* Visible but dim */
     border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark) var(--bevel-light) !important;
     /* Keep raised but dim */
-    background: #e0e0e0 !important;
+    background: #FFCCBC !important;
+    /* Light Orange */
     color: #888 !important;
 }
 
