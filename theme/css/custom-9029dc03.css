@@ -171,18 +171,18 @@ blockquote strong {
     display: none !important;
 }
 
-/* Simple bottom navigation - always visible */
+/* Simple bottom navigation - centered and adjacent */
 a.nav-chapters {
     position: fixed !important;
     bottom: 0 !important;
     top: auto !important;
     height: 40px !important;
-    width: 50% !important;
+    width: 60px !important;
     display: flex !important;
     align-items: center;
     justify-content: center;
     z-index: 9999 !important;
-    background: #000 !important;
+    background: #666 !important;
     color: #fff !important;
     border: none !important;
     text-decoration: none !important;
@@ -191,38 +191,33 @@ a.nav-chapters {
     cursor: pointer;
     margin: 0 !important;
     padding: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%);
 }
 
-/* Previous button - left half */
+/* Previous button - left of center */
 a.nav-chapters.previous {
-    left: 0 !important;
-    border-right: 1px solid #333 !important;
+    margin-left: -60px !important;
+    border-right: 1px solid #444 !important;
 }
 
 a.nav-chapters.previous::after {
     content: "<";
 }
 
-/* Next button - right half */
+/* Next button - right of center */
 a.nav-chapters.next {
-    right: 0 !important;
-    border-left: 1px solid #333 !important;
+    margin-left: 0 !important;
+    border-left: 1px solid #444 !important;
 }
 
 a.nav-chapters.next::before {
     content: ">";
 }
 
-/* Hover state - slightly lighter */
+/* Hover state - darker gray when clickable */
 a.nav-chapters:hover {
     background: #333 !important;
-}
-
-/* Disabled state - greyed out (when link doesn't exist) */
-a.nav-chapters[href=""] {
-    background: #666 !important;
-    cursor: not-allowed;
-    opacity: 0.5;
 }
 
 /* Hide SVG icons completely */
