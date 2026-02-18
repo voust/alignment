@@ -23,7 +23,6 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-    <link rel="stylesheet" href="fonts/fonts.css">
 
     <!-- Highlight.js Stylesheets -->
     <link rel="stylesheet" href="highlight.css">
@@ -97,7 +96,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="00_introduction/index.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="01_thesis/index.html"><strong aria-hidden="true">3.</strong> Thesis</a></li><li class="chapter-item expanded "><a href="99_appendices/index.html"><strong aria-hidden="true">4.</strong> Appendices</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="00_introduction/index.html"><strong aria-hidden="true">2.</strong> Introduction</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="01_thesis/index.html"><strong aria-hidden="true">3.</strong> Thesis</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="99_appendices/index.html"><strong aria-hidden="true">4.</strong> Appendices</a></span></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -163,7 +162,7 @@
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         <a href="https://github.com/voust/alignment" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
+                            <i id="git-repository-button" class="fa fab-github"></i>
                         </a>
 
                     </div>
@@ -208,6 +207,55 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
+
+                <!-- Inline fallback styles for robustness -->
+                <style>
+                    .nav-wide-wrapper {
+                        display: flex;
+                        justify-content: center;
+                        position: fixed;
+                        bottom: 20px;
+                        left: 0;
+                        right: 0;
+                        pointer-events: none;
+                        z-index: 10000;
+                    }
+
+                    .nav-chapters {
+                        width: 30px;
+                        height: 30px;
+                        background: #c0c0c0;
+                        background-color: #c0c0c0;
+                        border: 2px solid #fff;
+                        border-color: #fff #808080 #808080 #fff;
+                        pointer-events: auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: black !important;
+                        text-decoration: none;
+                        font-weight: bold;
+                        font-family: sans-serif;
+                        font-size: 16px;
+                        cursor: pointer;
+                        margin: 0 5px;
+                    }
+
+                    .sidebar-visible .nav-wide-wrapper {
+                        display: none !important;
+                    }
+
+                    .nav-chapters.disabled {
+                        opacity: 0.5;
+                        pointer-events: none;
+                        background: #e0e0e0;
+                        border-style: inset;
+                    }
+
+                    .nav-chapters:hover {
+                        background: #dcdcdc;
+                    }
+                </style>
 
                 <!-- Force both buttons to exist via JS if missing -->
                 <script>
