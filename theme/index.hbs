@@ -175,7 +175,21 @@
                         {{/if}}
                     </div>
 
-                    <h1 class="menu-title">{{ book_title }}</h1>
+                    <h1 class="menu-title">
+                        {{#if previous}}
+                        <a href="{{ path_to_root }}{{previous.link}}" class="header-nav-arrow prev"
+                            title="Previous: {{previous.title}}">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        {{/if}}
+                        <span class="header-title-text">{{ book_title }}</span>
+                        {{#if next}}
+                        <a href="{{ path_to_root }}{{next.link}}" class="header-nav-arrow next"
+                            title="Next: {{next.title}}">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                        {{/if}}
+                    </h1>
 
                     <div class="right-buttons">
                         {{#if print_enable}}
