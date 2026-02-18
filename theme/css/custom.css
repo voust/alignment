@@ -261,8 +261,16 @@ nav.nav-wide-wrapper {
 
     /* Tiny Size as requested (1/3 of previous 60px) */
     width: 20px !important;
+    min-width: 20px !important;
+    max-width: 20px !important;
     height: 20px !important;
+    min-height: 20px !important;
+    max-height: 20px !important;
+    flex: 0 0 20px !important;
+    /* Prevent ANY flexing */
+
     box-sizing: border-box !important;
+    padding: 0 !important;
 
     /* Colors */
     background: var(--panel, #c0c0c0) !important;
@@ -274,7 +282,8 @@ nav.nav-wide-wrapper {
 
     text-decoration: none !important;
     font-family: var(--heading-font, sans-serif);
-    font-size: 12px !important;
+    font-size: 10px !important;
+    /* Even smaller font for tiny button */
     font-weight: bold;
     line-height: 1 !important;
     cursor: pointer;
