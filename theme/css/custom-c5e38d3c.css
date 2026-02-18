@@ -194,51 +194,58 @@ blockquote strong {
 }
 
 /* 
-   Container: Fixed at bottom, centered layout.
-   Uses display: grid (2 columns) to ensure consistent slots for Previous/Next.
-   Even if one button is missing, the other stays in its slot.
-   Width: 200px ensures enough space between them while staying centered.
-   Pointer-events: none so clicks pass through empty space.
+   Container: Fixed at bottom.
+   Strategy: Use left/right anchors to define the "available space" 
+   and let `justify-content: center` handle the actual centering.
+   This is more robust than `calc()` or `transform`.
 */
 nav.nav-wide-wrapper {
     position: fixed !important;
     bottom: 20px !important;
-    left: 50% !important;
-    /* Start centered */
-    transform: translateX(-50%) !important;
-    /* Perfect center */
-    width: 200px !important;
+
+    /* Default: centered in full viewport (Sidebar Hidden) */
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    /* Let it fill the space */
+
     height: auto !important;
     z-index: 9999 !important;
 
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 10px !important;
+    display: flex !important;
+    /* Changed back to flex for easier centering in fluid width */
+    justify-content: center !important;
     align-items: center !important;
-    justify-items: center !important;
-    /* Center buttons in their cells */
+    gap: 10px !important;
 
     pointer-events: none !important;
     background: transparent !important;
     padding: 0 !important;
     margin: 0 !important;
+    transform: none !important;
 }
 
 /* 
    Sidebar Handling:
-   When sidebar is open, shift the center point.
-   Instead of complex calc(), we offset the 'left' position.
-   300px sidebar -> Center point becomes 300px + remaining space/2.
-   remaining space = 100% - 300px.
-   center = 300px + (50% - 150px) = 150px + 50%?
-   Easier: left: calc(50% + 150px).
-   This places the center exactly in the middle of the content area.
+   When sidebar is open, the "content area" starts at 300px.
+   So we set left to 300px, right stays 0.
+   Flexbox will center the children in this new available space.
 */
 .sidebar-visible nav.nav-wide-wrapper {
-    left: calc(50% + 150px) !important;
-    width: 200px !important;
-    /* Keep fixed width */
-    transform: translateX(-50%) !important;
+    left: 300px !important;
+    right: 0 !important;
+    width: auto !important;
+    transform: none !important;
+}
+
+/* Mobile: Sidebar behavior overrides */
+@media (max-width: 1080px) {
+
+    .sidebar-visible nav.nav-wide-wrapper,
+    nav.nav-wide-wrapper {
+        left: 0 !important;
+        right: 0 !important;
+    }
 }
 
 /* Navigation Buttons: The "Classic" look */
@@ -250,15 +257,15 @@ a.nav-chapters {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 60px !important;
-    /* Fixed button width */
-    height: 40px !important;
+
+    /* Reduced size as requested */
+    width: 44px !important;
+    height: 44px !important;
     box-sizing: border-box !important;
 
     /* Colors */
     background: var(--panel, #c0c0c0) !important;
     color: #000000 !important;
-    /* Always black text for classic gray buttons */
 
     /* Classic Bevel Border */
     border: 2px solid !important;
@@ -266,7 +273,8 @@ a.nav-chapters {
 
     text-decoration: none !important;
     font-family: var(--heading-font, sans-serif);
-    font-size: 20px !important;
+    font-size: 18px !important;
+    /* Slightly smaller text */
     font-weight: bold;
     line-height: 1 !important;
     cursor: pointer;
