@@ -157,44 +157,94 @@ blockquote strong {
     /* Restore font size */
 }
 
-/* Navigation buttons - create floating buttons at bottom-right */
-/* First, hide the default full-height nav buttons */
+/* E-reader style navigation bar at bottom */
+/* Hide the default full-height nav buttons */
 .nav-wrapper {
     display: none !important;
 }
 
-/* Style the nav-chapters links themselves (they are the buttons) */
+/* Create permanent bottom navigation bar */
+body {
+    padding-bottom: 50px;
+    /* Make room for nav bar */
+}
+
+/* Container for navigation - full width bottom bar */
+.page {
+    position: relative;
+}
+
+/* Style both navigation links to create split bar */
 a.nav-chapters {
     position: fixed !important;
-    bottom: 20px;
-    width: 50px !important;
-    height: 50px !important;
+    bottom: 0;
+    height: 45px !important;
+    width: 50% !important;
     display: flex !important;
     align-items: center;
     justify-content: center;
     z-index: 100;
     background: var(--bg, #fff);
-    border: 2px solid var(--fg, #000);
+    border-top: 2px solid var(--fg, #000);
     text-decoration: none !important;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    font-family: var(--heading-font);
+    font-size: 0.9rem;
+    color: var(--fg);
+    cursor: pointer;
+    transition: background 0.15s ease;
 }
 
-a.nav-chapters:hover {
-    background: var(--links-hover-bg, rgba(128, 128, 128, 0.2)) !important;
-}
-
-/* Position previous button */
+/* Previous button - left half */
 a.nav-chapters.previous {
-    right: 80px;
+    left: 0;
+    border-right: 1px solid var(--fg, #000);
 }
 
-/* Position next button */
+/* Next button - right half */
 a.nav-chapters.next {
-    right: 20px;
+    right: 0;
+    border-left: 1px solid var(--fg, #000);
 }
 
-/* Make SVG icons visible */
+/* Hover states */
+a.nav-chapters:hover {
+    background: var(--links-hover-bg, rgba(128, 128, 128, 0.15)) !important;
+}
+
+/* SVG arrow icons */
 a.nav-chapters svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+}
+
+a.nav-chapters:hover svg {
+    opacity: 1;
+}
+
+/* Add text labels for clarity */
+a.nav-chapters.previous::after {
+    content: "← Previous";
+    margin-left: 8px;
+}
+
+a.nav-chapters.next::before {
+    content: "Next →";
+    margin-right: 8px;
+}
+
+/* Hide SVG on wider screens in favor of text */
+@media (min-width: 768px) {
+    a.nav-chapters svg {
+        display: none;
+    }
+}
+
+/* On mobile, hide text and show only SVG */
+@media (max-width: 767px) {
+
+    a.nav-chapters.previous::after,
+    a.nav-chapters.next::before {
+        display: none;
+    }
 }
