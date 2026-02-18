@@ -165,42 +165,60 @@ blockquote strong {
     font-size: 15px;
 }
 
-/* Simple bottom navigation bar - e-reader style */
+/* ============================================
+   E-READER NAVIGATION BAR
+   Container-based solution for bulletproof centering
+   ============================================ */
+
 /* Hide the default full-height nav buttons */
 .nav-wrapper {
     display: none !important;
 }
 
-/* Ensure nav-wide-wrapper doesn't hide our buttons */
-.nav-wide-wrapper {
-    display: block !important;
+/* Transform nav-wide-wrapper into our centered container */
+nav.nav-wide-wrapper {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 120px !important;
+    height: 40px !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    pointer-events: auto !important;
 }
 
-/* Simple centered navigation bar - always at bottom */
+/* Individual navigation buttons */
 a.nav-chapters {
-    position: fixed !important;
-    top: auto !important;
-    bottom: 0 !important;
-    height: 40px !important;
+    position: relative !important;
+    flex: 0 0 60px !important;
     width: 60px !important;
-    display: block !important;
-    z-index: 9999 !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     background: #666 !important;
     color: #fff !important;
     border: none !important;
     text-decoration: none !important;
     font-family: var(--heading-font);
     font-size: 24px !important;
-    line-height: 40px !important;
-    text-align: center !important;
+    line-height: 1 !important;
     cursor: pointer;
     padding: 0 !important;
     margin: 0 !important;
+    box-sizing: border-box !important;
 }
 
-/* Previous button - left half of centered pair */
+/* Previous button styling */
 a.nav-chapters.previous {
-    left: calc(50vw - 60px) !important;
     border-right: 1px solid #444 !important;
 }
 
@@ -208,9 +226,8 @@ a.nav-chapters.previous::before {
     content: "<";
 }
 
-/* Next button - right half of centered pair (touching previous) */
+/* Next button styling */
 a.nav-chapters.next {
-    left: calc(50vw) !important;
     border-left: 1px solid #444 !important;
 }
 
@@ -218,23 +235,28 @@ a.nav-chapters.next::before {
     content: ">";
 }
 
-/* Hover state - darker gray */
+/* Hover state */
 a.nav-chapters:hover {
     background: #333 !important;
 }
 
-/* Hide SVG icons */
+/* Hide SVG icons from mdBook */
 a.nav-chapters svg {
     display: none !important;
 }
 
-/* Adjust when sidebar is open - shift right to stay centered on content */
-@media (min-width: 1080px) {
-    html:not(.sidebar-hidden) a.nav-chapters.previous {
-        left: calc(50vw + 150px - 60px) !important;
-    }
+/* Adjust container position when sidebar is open */
+html.sidebar-visible nav.nav-wide-wrapper {
+    left: calc(50% + 150px) !important;
+    transform: translateX(-50%) !important;
+}
 
-    html:not(.sidebar-hidden) a.nav-chapters.next {
-        left: calc(50vw + 150px) !important;
+/* Ensure buttons work on mobile */
+@media (max-width: 1080px) {
+
+    /* On smaller screens, no sidebar offset needed */
+    html.sidebar-visible nav.nav-wide-wrapper {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
 }
