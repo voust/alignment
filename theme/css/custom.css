@@ -196,6 +196,7 @@ blockquote strong {
 /* Simple bottom navigation - centered on content, not window */
 a.nav-chapters {
     position: fixed !important;
+    top: auto !important;
     bottom: 0 !important;
     height: 40px !important;
     width: 60px !important;
