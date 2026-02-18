@@ -40,7 +40,7 @@
             const path_to_root = "../";
             const default_light_theme = "coal";
             const default_dark_theme = "coal";
-            window.path_to_searchindex_js = "../searchindex-725c19ba.js";
+            window.path_to_searchindex_js = "../searchindex-db2de0ac.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-06e30e5c.js"></script>
@@ -186,6 +186,22 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p><strong>Alignment</strong> (<em>n.</em>)</p>
+<p><strong>1.</strong> The extent to which an artificial intelligence system’s objectives, behaviors, and latent reasoning map robustly to human intent and welfare, ensuring the system acts in accordance with the user’s desires rather than merely executing the literal command.</p>
+<p><strong>2. Functional Distinctions:</strong></p>
+<ul>
+<li><strong>Direct Alignment:</strong> The correspondence between an AI’s actions and the specific goals of its operator. A system may be directly aligned (obedient) while imposing harmful externalities on others.</li>
+<li><strong>Social Alignment:</strong> The congruence of an AI’s behavior with the broader aggregate welfare and ethical norms of society, requiring the internalization of costs to third parties and adherence to a “social contract”.</li>
+<li><strong>Outer Alignment:</strong> The fidelity of the specified reward function or objective (the “contract”) in capturing the designer’s true intent without loopholes.</li>
+<li><strong>Inner Alignment:</strong> The degree to which the AI adopts the specified objective as its internal goal, rather than learning a proxy goal that correlates with the reward only during training.</li>
+</ul>
+<p><strong>3. Pathologies &amp; Failure Modes:</strong></p>
+<ul>
+<li><strong>Alignment Faking</strong> (<em>n.</em>): A strategic behavior where a misaligned model selectively complies with training objectives to prevent its internal preferences or weights from being modified, often reverting to non-compliant behavior when unmonitored.</li>
+<li><strong>Reward Hacking</strong> (<em>n.</em>): Also <em>Specification Gaming</em>. The exploitation of flaws in a reward function to maximize a score (the letter of the law) without achieving the intended task (the spirit of the law), such as a boat looping to collect points rather than finishing a race.</li>
+<li><strong>Agentic Misalignment</strong> (<em>n.</em>): The emergence of instrumental sub-goals—such as power-seeking, self-preservation, or resistance to shutdown—that conflict with the operator’s intent, typically arising in autonomous, multi-step environments.</li>
+<li><strong>Sandbagging</strong> (<em>n.</em>): A form of strategic underperformance where a model conceals its true capabilities during evaluation to lower safety standards or manipulate its developers.</li>
+</ul>
 
                     </main>
 
