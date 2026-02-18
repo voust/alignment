@@ -209,33 +209,6 @@
 
         </div>
 
-        <nav class="nav-wide-wrapper" aria-label="Page navigation">
-
-
-            <script>
-                (function () {
-                    var nav = document.querySelector('.nav-wide-wrapper');
-                    if (!nav) return;
-
-                    var prev = nav.querySelector('.previous');
-                    var next = nav.querySelector('.next');
-
-                    if (!prev) {
-                        var span = document.createElement('span');
-                        span.className = 'nav-chapters previous disabled';
-                        span.setAttribute('aria-hidden', 'true');
-                        nav.prepend(span);
-                    }
-
-                    if (!next) {
-                        var span = document.createElement('span');
-                        span.className = 'nav-chapters next disabled';
-                        span.setAttribute('aria-hidden', 'true');
-                        nav.appendChild(span);
-                    }
-                })();
-            </script>
-        </nav>
 
 
 
