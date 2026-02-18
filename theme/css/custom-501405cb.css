@@ -176,11 +176,27 @@ blockquote strong {
     display: block !important;
 }
 
-/* Simple bottom navigation - centered and adjacent */
+/* Add padding to content for nav bar */
+.content {
+    padding-bottom: 50px !important;
+}
+
+/* Container for nav buttons - centered on content area */
+.content::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    z-index: 9998;
+    pointer-events: none;
+}
+
+/* Simple bottom navigation - centered on content, not window */
 a.nav-chapters {
     position: fixed !important;
     bottom: 0 !important;
-    top: auto !important;
     height: 40px !important;
     width: 60px !important;
     display: flex !important;
@@ -194,15 +210,15 @@ a.nav-chapters {
     font-family: var(--heading-font);
     font-size: 24px !important;
     cursor: pointer;
-    margin: 0 !important;
     padding: 0 !important;
-    left: 50% !important;
-    right: auto !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
-/* Previous button - left of center (perfectly centered pair) */
+/* Previous button - always visible, left of center */
 a.nav-chapters.previous {
-    transform: translateX(calc(-50% - 30px)) !important;
+    left: calc(50% - 60px) !important;
     border-right: 1px solid #444 !important;
 }
 
@@ -210,9 +226,9 @@ a.nav-chapters.previous::after {
     content: "<";
 }
 
-/* Next button - right of center (perfectly centered pair) */
+/* Next button - always visible, right of center */
 a.nav-chapters.next {
-    transform: translateX(calc(-50% + 30px)) !important;
+    left: calc(50%) !important;
     border-left: 1px solid #444 !important;
 }
 
@@ -225,7 +241,26 @@ a.nav-chapters:hover {
     background: #333 !important;
 }
 
+/* Disabled state - still visible but unclickable */
+a.nav-chapters[href=""],
+a.nav-chapters:not([href]) {
+    opacity: 0.3 !important;
+    cursor: default !important;
+    pointer-events: none !important;
+}
+
 /* Hide SVG icons completely */
 a.nav-chapters svg {
     display: none !important;
+}
+
+/* Adjust for sidebar - keep buttons centered on content */
+@media (min-width: 1080px) {
+    .sidebar-visible a.nav-chapters.previous {
+        left: calc(50% + 150px - 60px) !important;
+    }
+
+    .sidebar-visible a.nav-chapters.next {
+        left: calc(50% + 150px) !important;
+    }
 }
