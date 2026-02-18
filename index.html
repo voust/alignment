@@ -8,7 +8,7 @@
 
 
     <!-- Custom HTML head -->
-
+    
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
@@ -22,6 +22,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+    <link rel="stylesheet" href="fonts/fonts.css">
 
     <!-- Highlight.js Stylesheets -->
     <link rel="stylesheet" href="highlight.css">
@@ -95,7 +96,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="00_introduction/index.html"><strong aria-hidden="true">2.</strong> Introduction</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="01_thesis/index.html"><strong aria-hidden="true">3.</strong> Thesis</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="99_appendices/index.html"><strong aria-hidden="true">4.</strong> Appendices</a></span></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="00_introduction/index.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="01_thesis/index.html"><strong aria-hidden="true">3.</strong> Thesis</a></li><li class="chapter-item expanded "><a href="99_appendices/index.html"><strong aria-hidden="true">4.</strong> Appendices</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -127,7 +128,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor"
@@ -161,7 +162,7 @@
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         <a href="https://github.com/voust/alignment" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fab-github"></i>
+                            <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
                         <a href="https://github.com/voust/alignment/edit/main/src/index.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
@@ -195,12 +196,12 @@
                     <main>
                         <h1 id="alignment"><a class="header" href="#alignment">ALIGNMENT</a></h1>
 <p><strong>Alignment</strong> (<em>n.</em>)</p>
-<p><strong>1.</strong> The extent to which an artificial intelligence system’s objectives, behaviors, and latent reasoning map robustly to human intent and welfare, ensuring the system acts in accordance with the user’s desires rather than merely executing the literal command.</p>
+<p><strong>1.</strong> The extent to which an artificial intelligence system’s objectives, behaviors, and latent reasoning map robustly to human intent and welfare, ensuring the system acts in accordance with the user's desires rather than merely executing the literal command.</p>
 <p><strong>2. Functional Distinctions:</strong></p>
 <ul>
 <li><strong>Direct Alignment:</strong> The correspondence between an AI’s actions and the specific goals of its operator. A system may be directly aligned (obedient) while imposing harmful externalities on others.</li>
-<li><strong>Social Alignment:</strong> The congruence of an AI’s behavior with the broader aggregate welfare and ethical norms of society, requiring the internalization of costs to third parties and adherence to a “social contract”.</li>
-<li><strong>Outer Alignment:</strong> The fidelity of the specified reward function or objective (the “contract”) in capturing the designer’s true intent without loopholes.</li>
+<li><strong>Social Alignment:</strong> The congruence of an AI’s behavior with the broader aggregate welfare and ethical norms of society, requiring the internalization of costs to third parties and adherence to a "social contract".</li>
+<li><strong>Outer Alignment:</strong> The fidelity of the specified reward function or objective (the "contract") in capturing the designer's true intent without loopholes.</li>
 <li><strong>Inner Alignment:</strong> The degree to which the AI adopts the specified objective as its internal goal, rather than learning a proxy goal that correlates with the reward only during training.</li>
 </ul>
 <p><strong>3. Pathologies &amp; Failure Modes:</strong></p>
@@ -216,10 +217,6 @@
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                        <a rel="next prefetch" href="00_introduction/index.html" class="mobile-nav-chapters next"
-                            title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -228,10 +225,6 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                <a rel="next prefetch" href="00_introduction/index.html" class="nav-chapters next"
-                    title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                    <i class="fa fa-angle-right"></i>
-                </a>
 
 
                 <!-- Force both buttons to exist via JS if missing -->
