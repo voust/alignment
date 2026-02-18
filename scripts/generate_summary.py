@@ -41,7 +41,7 @@ def generate_summary():
                 seen_numbers[num] = item
                 folders.append((item, num, match.group(2)))
             else:
-                if item not in ["images"]:
+                if item not in ["images", "css", "js", "assets"]:
                     print(f"❌ BLOCKING ERROR: Unauthorized folder '{item}' found in src/.")
                     sys.exit(1)
 
