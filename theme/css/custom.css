@@ -249,7 +249,7 @@ nav.nav-wide-wrapper {
 }
 
 /* Navigation Buttons: The "Classic" look */
-a.nav-chapters {
+.nav-chapters {
     pointer-events: auto !important;
     position: relative !important;
 
@@ -258,9 +258,9 @@ a.nav-chapters {
     align-items: center !important;
     justify-content: center !important;
 
-    /* Reduced size as requested */
-    width: 44px !important;
-    height: 44px !important;
+    /* Small Size as requested */
+    width: 24px !important;
+    height: 24px !important;
     box-sizing: border-box !important;
 
     /* Colors */
@@ -273,56 +273,53 @@ a.nav-chapters {
 
     text-decoration: none !important;
     font-family: var(--heading-font, sans-serif);
-    font-size: 18px !important;
-    /* Slightly smaller text */
+    font-size: 14px !important;
     font-weight: bold;
     line-height: 1 !important;
     cursor: pointer;
     margin: 0 !important;
 }
 
-/* Slot Assignment */
-a.nav-chapters.previous {
-    grid-column: 1 !important;
-    justify-self: end !important;
-    /* Push to right of left slot */
-}
-
-a.nav-chapters.next {
-    grid-column: 2 !important;
-    justify-self: start !important;
-    /* Push to left of right slot */
+/* Disabled State */
+.nav-chapters.disabled {
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+    border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark) var(--bevel-light) !important;
+    /* Keep raised but dim */
+    background: #e0e0e0 !important;
+    color: #888 !important;
 }
 
 /* Active/Pressed State */
-a.nav-chapters:active {
+.nav-chapters:active {
     border-color: var(--bevel-dark, #808080) var(--bevel-light, #fff) var(--bevel-light, #fff) var(--bevel-dark, #808080) !important;
     transform: translate(1px, 1px);
 }
 
 /* Hover State */
-a.nav-chapters:hover {
+.nav-chapters:hover {
     background: var(--links-hover-bg, #dcdcdc) !important;
     text-decoration: none !important;
 }
 
-/* Icons/Text */
-a.nav-chapters.previous::before {
+/* Icons/Text: Use CSS content for consistency */
+.nav-chapters.previous::before {
     content: "<" !important;
     margin-right: 0;
 }
 
-a.nav-chapters.next::before {
+.nav-chapters.next::before {
     content: ">" !important;
     margin-left: 0;
 }
 
-/* New: Hide 'next' psudeo-element on next button to avoid double arrows */
-a.nav-chapters.next::after {
+.nav-chapters.next::after {
     content: none !important;
 }
 
-a.nav-chapters svg {
+/* Hide FontAwesome icons inside */
+.nav-chapters i,
+.nav-chapters svg {
     display: none !important;
 }
 
